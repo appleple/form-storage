@@ -1,0 +1,35 @@
+{
+  "name": "form-storage",
+  "version": "1.0.0",
+  "description": "just a simple form storage",
+  "main": "./lib/index.js",
+  "scripts": {
+    "bundle": "browserify ./src/index.js -t babelify -p licensify --standalone FormStorage --outfile ./build/form-storage.js",
+    "build": "npm run bundle && npm run build:lib",
+    "build:lib": "babel src --out-dir lib"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-es2015": "^6.18.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.1",
+    "co": "^4.6.0",
+    "eslint": "^3.13.0",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-config-airbnb-base": "^11.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "fs-extra": "^2.1.2",
+    "licensify": "^3.1.2",
+    "node-cmd": "^2.0.0",
+    "uglifyjs": "^2.4.10",
+    "watch": "^1.0.1",
+    "watchify": "^3.7.0"
+  },
+  "author": "appleple",
+  "license": "MIT",
+  "dependencies": {
+    "form-serialize": "^0.7.2",
+    "query-string": "^5.0.1"
+  }
+}
