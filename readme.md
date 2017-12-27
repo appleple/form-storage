@@ -2,10 +2,6 @@
 
 Just a simple form storage
 
-```sh
-npm install form-storage --save
-```
-
 ```js
 const formStorage = new FormStorage('.js-form', {
   name: 'form-basic',
