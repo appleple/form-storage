@@ -5,7 +5,7 @@
  * form-storage:
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: appleple
- *   version: 1.0.0
+ *   version: 1.0.1
  *
  * decode-uri-component:
  *   license: MIT (http://opensource.org/licenses/MIT)
@@ -784,11 +784,17 @@ var FormStorage = function () {
           var arr = obj[key];
           [].forEach.call(targets, function (tar, index) {
             if (tar.type === 'checkbox') {
-              arr.forEach(function (item) {
-                if (item === tar.value) {
+              if (arr.forEach) {
+                arr.forEach(function (item) {
+                  if (item === tar.value) {
+                    tar.checked = true;
+                  }
+                });
+              } else {
+                if (arr === tar.value) {
                   tar.checked = true;
                 }
-              });
+              }
             } else if (tar.type === 'radio') {
               if (tar.value === arr) {
                 tar.checked = true;
