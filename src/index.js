@@ -68,11 +68,17 @@ export default class FormStorage {
         const arr = obj[key];
         [].forEach.call(targets, (tar, index) => {
           if (tar.type === 'checkbox') {
-            arr.forEach(item => {
-              if (item === tar.value) {
+            if (arr.forEach) {
+              arr.forEach(item => {
+                if (item === tar.value) {
+                  tar.checked = true;
+                }
+              });
+            } else {
+              if (arr === tar.value) {
                 tar.checked = true;
               }
-            });
+            }
           } else if (tar.type === 'radio') {
             if (tar.value === arr) {
               tar.checked = true;
