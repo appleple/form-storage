@@ -19,3 +19,14 @@ formStorage.apply();
 // save the form data to the storage.
 formStorage.save();
 ```
+
+When you just want to remember 'user-name' and 'user-mail'
+```js
+const formStorage = new FormStorage('.js-form', {
+  name: 'form-basic',
+  includes: [
+  '[name="user-name"]',
+  '[name="user-email"]'
+  ]
+});
+```
