@@ -8,7 +8,7 @@ npm install form-storage --save
 
 ```js
 const formStorage = new FormStorage('.js-form', {
-  name: 'form-basic',
+  name: 'form-basic', // you can decide local-storage name 
   ignores: [
   '[type="hidden"]',
   '[name="policy"]'
