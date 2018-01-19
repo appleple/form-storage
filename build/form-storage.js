@@ -5,7 +5,7 @@
  * form-storage:
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: appleple
- *   version: 1.0.0
+ *   version: 1.0.1
  *
  * decode-uri-component:
  *   license: MIT (http://opensource.org/licenses/MIT)
@@ -727,7 +727,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var defaults = {
   name: 'form',
-  ignores: []
+  ignores: [],
+  includes: []
 };
 
 var FormStorage = function () {
@@ -753,7 +754,9 @@ var FormStorage = function () {
     key: 'apply',
     value: function apply() {
       var str = window.localStorage.getItem(this.opt.name);
-      var ignores = this.opt.ignores;
+      var _opt = this.opt,
+          ignores = _opt.ignores,
+          includes = _opt.includes;
 
       if (!str) {
         return;
@@ -778,6 +781,19 @@ var FormStorage = function () {
 
         if (flag) {
           return 'continue';
+        }
+
+        if (includes.length > 0) {
+          flag = true;
+          includes.forEach(function (include) {
+            if (target.matches(include)) {
+              flag = false;
+              return false;
+            }
+          });
+          if (flag) {
+            return 'continue';
+          }
         }
 
         if (targets && targets.length > 1) {

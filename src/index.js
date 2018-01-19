@@ -3,7 +3,8 @@ import queryString from 'query-string';
 
 const defaults = {
   name: 'form',
-  ignores: []
+  ignores: [],
+  includes: []
 }
 
 export default class FormStorage {
@@ -24,7 +25,7 @@ export default class FormStorage {
 
   apply() {
     const str = window.localStorage.getItem(this.opt.name);
-    const { ignores } = this.opt;
+    const { ignores, includes } = this.opt;
     if (!str) {
       return;
     }
@@ -48,6 +49,19 @@ export default class FormStorage {
 
       if (flag) {
         continue;
+      }
+
+      if (includes.length > 0) {
+        flag = true;
+        includes.forEach((include) => {
+          if (target.matches(include)) {
+            flag = false;
+            return false;
+          }
+        });
+        if (flag) {
+          continue;
+        }
       }
 
       if (targets && targets.length > 1) {
