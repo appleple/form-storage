@@ -23,6 +23,7 @@
     "fs-extra": "^2.1.2",
     "licensify": "^3.1.2",
     "node-cmd": "^2.0.0",
+    "np": "^2.18.3",
     "uglifyjs": "^2.4.10",
     "watch": "^1.0.1",
     "watchify": "^3.7.0"
@@ -31,7 +32,6 @@
   "license": "MIT",
   "dependencies": {
     "form-serialize": "^0.7.2",
-    "np": "^2.18.3",
     "query-string": "^5.0.1"
   }
 }

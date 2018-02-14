@@ -4,7 +4,8 @@ import queryString from 'query-string';
 const defaults = {
   name: 'form',
   ignores: [],
-  includes: []
+  includes: [],
+  checkbox: null
 }
 
 export default class FormStorage {
@@ -12,6 +13,11 @@ export default class FormStorage {
   constructor(selector, opt) {
     this.ele = document.querySelector(selector);
     this.opt = Object.assign({}, defaults, opt);
+    if (this.opt.checkbox) {
+      this.checkbox = document.querySelector(this.opt.checkbox);
+      this.setCheckbox();
+      this.apply();
+    }
   }
 
   save() {
@@ -21,6 +27,16 @@ export default class FormStorage {
 
   clear() {
     window.localStorage.removeItem(this.opt.name);
+  }
+
+  setCheckbox() {
+    this.ele.addEventListener('submit', () => {
+      if (this.checkbox.checked) {
+        this.save();
+      } else {
+        this.clear();
+      }
+    })
   }
 
   apply() {

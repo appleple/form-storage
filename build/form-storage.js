@@ -5,7 +5,7 @@
  * form-storage:
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: appleple
- *   version: 1.0.1
+ *   version: 1.1.0
  *
  * decode-uri-component:
  *   license: MIT (http://opensource.org/licenses/MIT)
@@ -728,7 +728,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var defaults = {
   name: 'form',
   ignores: [],
-  includes: []
+  includes: [],
+  checkbox: null
 };
 
 var FormStorage = function () {
@@ -737,6 +738,11 @@ var FormStorage = function () {
 
     this.ele = document.querySelector(selector);
     this.opt = Object.assign({}, defaults, opt);
+    if (this.opt.checkbox) {
+      this.checkbox = document.querySelector(this.opt.checkbox);
+      this.setCheckbox();
+      this.apply();
+    }
   }
 
   _createClass(FormStorage, [{
@@ -749,6 +755,19 @@ var FormStorage = function () {
     key: 'clear',
     value: function clear() {
       window.localStorage.removeItem(this.opt.name);
+    }
+  }, {
+    key: 'setCheckbox',
+    value: function setCheckbox() {
+      var _this = this;
+
+      this.ele.addEventListener('submit', function () {
+        if (_this.checkbox.checked) {
+          _this.save();
+        } else {
+          _this.clear();
+        }
+      });
     }
   }, {
     key: 'apply',
