@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="steelydylan">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="FormStorage">
+    <meta property="og:title" content="FormStorage">
+    <meta property="og:description" content="A JavaScript library to support store form-data to the localstorage and restore them.">
+    <meta property="og:url" content="https://appleple.github.io/form-storage/">
+    <meta property="og:image" content="https://appleple.github.io/form-storage/images/screenshot.png">
+    <meta name="twitter:site" content="FormStorage">
+    <meta name="twitter:creator" content="@appleplecom">
+    <meta name="twitter:url" content="https://appleple.github.io/form-storage/">
+    <meta name="twitter:title" content="FormStorage">
+    <meta name="twitter:description" content="A JavaScript library to support store form-data to the localstorage and restore them.">
+    <meta name="twitter:card" content="summary">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="">
+    <title>FormStorage</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://kokushin.github.io/unim/dist/css/unim-product.css">
+    <link rel="stylesheet" href="https://unpkg.com/scroll-hint@latest/css/scroll-hint.css">
+    <link rel="stylesheet" href="./color-teal.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <link rel="apple-touch-icon" sizes="57x57" href="https://appleple.github.io/form-storage/images/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://appleple.github.io/form-storage/images/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://appleple.github.io/form-storage/images/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://appleple.github.io/form-storage/images/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://appleple.github.io/form-storage/images/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://appleple.github.io/form-storage/images/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://appleple.github.io/form-storage/images/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://appleple.github.io/form-storage/images/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://appleple.github.io/form-storage/images/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://appleple.github.io/form-storage/images/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://appleple.github.io/form-storage/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://appleple.github.io/form-storage/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://appleple.github.io/form-storage/images/favicon-16x16.png">
+    <meta name="msapplication-TileImage" content="https://appleple.github.io/form-storage/images/ms-icon-144x144.png">
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <style>
+        @media (max-width: 767px) {
+            .unim-logo-box {
+                order: -1;
+            }
+        }
+
+        .unim-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 160px;
+            height: 160px;
+            /* background-color: #fff; */
+            border-radius: 16px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .unim-logo img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .header .logo sup {
+            font-size: .875rem;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            line-height: 1;
+        }
+
+        @media (max-width: 767px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+        }
+
+        .section-title {
+            font-size: 3rem;
+        }
+
+        table td,
+        table th {
+            white-space: nowrap;
+        }
+
+        .js-scrollable {
+            max-width: 640px;
+            margin: 30px auto 0 auto;
+        }
+        svg{
+          cursor: pointer;
+          position: relative;
+          top: 0;
+          -webkit-transition: top .3s;
+            -moz-transition: top .3s;
+              -ms-transition: top .3s;
+              -o-transition: top .3s;
+                  transition: top .3s;
+          border: 1px solid #FFF;
+        }
+        svg:hover{
+          top: -5px;
+        }
+        svg [id^=svg_text]{
+          width: 0;
+          stroke: #FFFFFF;
+          -webkit-transition: width .3s;
+            -moz-transition: width .3s;
+              -ms-transition: width .3s;
+              -o-transition: width .3s;
+                  transition: width .3s;
+        }
+        svg #svg_text1{
+          -webkit-transition: width .3s;
+            -moz-transition: width .3s;
+              -ms-transition: width .3s;
+              -o-transition: width .3s;
+                  transition: width .3s;
+        }
+        svg #svg_text2{
+          -webkit-transition: width .4s;
+            -moz-transition: width .4s;
+              -ms-transition: width .4s;
+              -o-transition: width .4s;
+                  transition: width .4s;
+        }
+        svg #svg_text3{
+          -webkit-transition: width .5s;
+            -moz-transition: width .5s;
+              -ms-transition: width .5s;
+              -o-transition: width .5s;
+                  transition: width .5s;
+        }
+        svg #svg_text4{
+          -webkit-transition: width .6s;
+            -moz-transition: width .6s;
+              -ms-transition: width .6s;
+              -o-transition: width .6s;
+                  transition: width .6s;
+        }
+        svg #svg_text5{
+          -webkit-transition: width .7s;
+            -moz-transition: width .7s;
+              -ms-transition: width .7s;
+              -o-transition: width .7s;
+                  transition: width .7s;
+        }
+        svg #svg_text6{
+          -webkit-transition: width .8s;
+            -moz-transition: width .8s;
+              -ms-transition: width .8s;
+              -o-transition: width .8s;
+                  transition: width .8s;
+        }
+        svg:hover [id^=svg_text]{
+          width:102px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hero">
+        <header class="header is-bar is-fixed">
+            <div class="inner is-medium">
+                <h1 class="logo">FormStorage</h1>
+                <div class="menu is-hide-small">
+                    <a href="#quick-start">Quick Start</a>
+                    <a href="#demo">Demo</a>
+                    <a href="https://github.com/appleple/form-storage">GitHub</a>
+                    <a href="https://github.com/appleple/form-storage/archive/master.zip" class="button is-small is-ghost">Download</a>
+                </div>
+            </div>
+        </header>
+        <div class="hero-content">
+            <div class="inner">
+                <div class="grid is-gutter is-middle is-col-2 is-col-small-1">
+                    <div class="grid-cell">
+                        <h2 class="hero-title">FormStorage</h2>
+                        <p class="hero-text">A JavaScript library to support store form-data to the localstorage and restore them.</p>
+                        <p class="hero-text">
+                            <a href="https://github.com/appleple/form-storage/archive/master.zip" class="button" style="margin-right:10px;">Download</a>
+                            <a href="https://github.com/appleple/form-storage" class="button">
+                                <i class="fa fa-github"></i>GitHub</a>
+                        </p>
+                    </div>
+                    <div class="grid-cell is-col-fit unim-logo-box">
+                        <div class="unim-logo">
+                          <svg width="141px" height="176px" viewBox="0 0 141 176" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                          xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                          <!-- Generator: Sketch 3.3.3 (12072) - http://www.bohemiancoding.com/sketch -->
+                          <title>Rectangle 1 + Rectangle 2 + Rectangle 2 Copy + Rectangle 2 Copy 2 + Rectangle 2 + Rectangle 2 Copy + Rectangle 2
+                            Copy 2 Copy</title>
+                          <desc>Created with Sketch.</desc>
+                          <defs></defs>
+                          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                            <g id="Rectangle-1-+-Rectangle-2-+-Rectangle-2-Copy-+-Rectangle-2-Copy-2-+-Rectangle-2-+-Rectangle-2-Copy-+-Rectangle-2-Copy-2-Copy"
+                              sketch:type="MSLayerGroup">
+                              <rect id="Rectangle-1" fill="#E38D13" sketch:type="MSShapeGroup" x="0" y="0" width="141" height="176" rx="4"></rect>
+                              <g id="Rectangle-2-+-Rectangle-2-Copy-+-Rectangle-2-Copy-2" transform="translate(20.000000, 37.000000)" fill="#FFFFFF" sketch:type="MSShapeGroup">
+                                <rect x="0" y="0" width="101" height="7"></rect>
+                                <rect x="0" y="17" width="101" height="7"></rect>
+                                <rect x="0" y="34" width="101" height="7"></rect>
+                  
+                                <rect id="svg_text1" x="0" y="0" width="0" height="7" fill="#e38d13"></rect>
+                                <rect id="svg_text2" x="0" y="17" width="0" height="7" fill="#e38d13"></rect>
+                                <rect id="svg_text3" x="0" y="34" width="0" height="7" fill="#e38d13"></rect>
+                              </g>
+                              <g id="Rectangle-2-+-Rectangle-2-Copy-+-Rectangle-2-Copy-2-Copy" transform="translate(20.000000, 88.000000)" fill="#FFFFFF"
+                                sketch:type="MSShapeGroup">
+                                <rect x="0" y="0" width="101" height="7"></rect>
+                                <rect x="0" y="17" width="101" height="7"></rect>
+                                <rect x="0" y="34" width="101" height="7"></rect>
+                  
+                                <rect id="svg_text4" x="0" y="0" width="101" height="7" fill="#e38d13"></rect>
+                                <rect id="svg_text5" x="0" y="17" width="101" height="7" fill="#e38d13"></rect>
+                                <rect id="svg_text6" x="0" y="34" width="101" height="7" fill="#e38d13"></rect>
+                              </g>
+                            </g>
+                          </g>
+                        </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <main class="main">
+        <div class="content">
+            <section class="section">
+                <div class="inner is-small">
+                    <h2 id="demo">Demo</h2>
+                    <p>Fill the form and press the save button. then, reload this page.</p>
+                    <form class="js-form-storage" style="margin-bottom: 20px;">
+                      <table style="width:100%;">
+                        <tr>
+                          <th>Sex</th>
+                          <td>
+                            <label style="margin-right:15px;">
+                              <input type="radio" name="sex" value="man">
+                              Man
+                            </label>
+                            <label>
+                              <input type="radio" name="sex" value="woman">
+                              Woman
+                            </label>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>Name</th>
+                          <td><input type="text" name="name" /></td>
+                        </tr>
+                        <tr>
+                            <th>
+                              Favorite Colors
+                            </th>
+                            <td>
+                                <label style="margin-right:15px;">
+                                  <input type="checkbox" name="colors" value="blue">
+                                  Blue
+                                </label>
+                                <label style="margin-right:15px;">
+                                  <input type="checkbox" name="colors" value="red">
+                                  Red
+                                </label>
+                                <label style="margin-right:15px;">
+                                  <input type="checkbox" name="colors" value="yellow">
+                                  Yellow
+                                </label>
+                                <label style="margin-right:15px;">
+                                  <input type="checkbox" name="colors" value="black">
+                                  black
+                                </label>
+                                <label>
+                                  <input type="checkbox" name="colors" value="white">
+                                  white
+                                </label>
+                            </td>
+                        </tr>
+                      </table>
+                    </form>
+                    <button class="button js-save">save</button> 
+                    <button class="button js-reload">reload</button> 
+                    <script src="https://unpkg.com/form-storage@latest/build/form-storage.js"></script>
+                    <script>
+                    var storage = new FormStorage('.js-form-storage',{
+                      name: 'form-storage',
+                      checkbox: '.js-persist'
+                    });
+                    storage.apply();
+                    document.querySelector('.js-save').addEventListener('click', function() {
+                      storage.save();
+                    });
+                    document.querySelector('.js-reload').addEventListener('click', function() {
+                      location.reload();
+                    });
+                    </script>
+                </div>
+            </section>
+            <section class="section">
+                <div class="inner is-small">
+                    <h2 id="quick-start">Quick start</h2>
+                    <h3>Using CDN</h3>
+                    <p>You can easily start by using CDN.</p>
+                    <p>Add the following description in the
+                        <code>&lt;head&gt;</code> tag of the web page you want to use FormStorage.</p>
+                    <pre><code class="html">&lt;script src="https://unpkg.com/form-storage@latest/build/js/form-storage.min.js"&gt;&lt;/script&gt;</code></pre>
+                    <p>You can also bundle the library with Browserify/Webpack</p>
+                    <pre><code class="shell">npm install form-storage --save</code></pre>
+                    <pre><code class="javascript">import FormStorage from 'form-storage'</code></pre>
+                    <p>Wrap the elements you want to apply ScrollSuggest like below</p>
+                    <pre><code class="html">&lt;form class=&quot;js-form-storage&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;first-name&quot; /&gt;
+  &lt;input type=&quot;text&quot; name=&quot;last-name&quot; /&gt;
+  &lt;input type=&quot;email&quot; name=&quot;email&quot; /&gt;
+  &lt;input type=&quot;password&quot; name=&quot;password&quot; /&gt;
+  &lt;label&gt;
+    &lt;input type=&quot;checkbox&quot; class=&quot;js-persist&quot; /&gt;
+    Allow to store the form-data to the localstorage.
+  &lt;/label&gt;
+&lt;/form&gt;</code></pre>
+                    <p>Write the following script</p>
+                    <pre><code class="js">new FormStorage('.js-scrollable', {
+  name: 'form-storage', //localstorage name
+  ignores: [ // The selectors specified here, won't be stored in the storage.
+    '[type="password"]'
+  ],
+  checkbox: '.js-persist' //if the selector specified here is checked, the form data will be stored.
+});</code></pre>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="inner is-small">
+                    <h2 id="options">Options</h2>
+                    <p>Some options are available when making new instances like below.</p>
+                    <pre><code class="js">var storage = new FormStorage('.js-scrollable', {
+  name: 'form-storage', //localstorage name
+  ignores: [ // The selectors specified here, won't be stored in the storage.
+    '[type="password"]', '.js-ignore'
+  ],
+  checkbox: '.js-persist' //if the selector specified here is checked, the form data will be stored.
+});</code></pre>
+                    <p>For your reference, below is the list of the options available.</p>
+                    <div class="js-scrollable">
+                    <table class="table">
+                        <tr>
+                            <th style="text-align:left;">Name</th>
+                            <th style="text-align:left;">Default</th>
+                            <th style="text-align:left;">Description</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>name</code>
+                            </td>
+                            <td>form</td>
+                            <td>localstorage name to be used</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>ignores</code>
+                            </td>
+                            <td>[]</td>
+                            <td>Selectors which won't be stored on the storage</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>includes</code>
+                            </td>
+                            <td>[]</td>
+                            <td>When specified, only selectors specified here will be stored</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <code>checkbox</code>
+                            </td>
+                            <td>null</td>
+                            <td>When specified, only when the element is checked, the form-data will be saved</td>
+                        </tr>
+                    </table>
+                  </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="inner is-small">
+                    <h2 id="options">Methods</h2>
+                    <p>You can also use some methods from the instances like below</p>
+                    <pre><code class="js">var storage = new FormStorage('.js-scrollable', {
+  name: 'form-storage', //localstorage name
+  ignores: [ // The selectors specified here, won't be stored in the storage.
+    '[type="password"]', '.js-ignore'
+  ],
+  checkbox: '.js-persist' //if the selector specified here is checked, the form data will be stored.
+});
+storage.save(); //using the method
+</code></pre>
+                    <div class="js-scrollable">
+                      <table class="table">
+                        <tr>
+                          <th style="text-align:left;">Name</th>
+                          <th style="text-align:left;">Description</th>
+                        </tr>
+                        <tr>
+                          <td>save</td>
+                          <td>Save the form-data on the localstorage</td>
+                        </tr>
+                        <tr>
+                            <td>apply</td>
+                            <td>Restore the form-data and fill the form from the localstorage</td>
+                        </tr>
+                        <tr>
+                            <td>clear</td>
+                            <td>Remove the localstorage</td>
+                        </tr>
+                      </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" style="background-image:url(https://source.unsplash.com/pb_lF8VWaPU/1600x900)">
+                <div class="inner">
+                    <div class="grid is-gutter is-middle is-center">
+                        <div class="grid-cell">
+                            <h2 style="margin:0">Join development on</h2>
+                        </div>
+                        <div class="grid-cell">
+                            <a href="https://github.com/appleple/form-storage" class="button is-large is-primary">GitHub</a>
+                        </div>
+                        <div class="grid-cell">
+                            <a href="https://github.com/appleple/form-storage/blob/master/LICENSE">License</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer is-bar">
+        <div class="inner">
+            <!-- <div class="menu is-list">
+          <div class="menu-group">
+            <strong>Data</strong>
+            <a href="#">Home</a>
+            <a href="#">Works</a>
+            <a href="#">Profile</a>
+            <a href="#">Contact</a>
+          </div>
+          <div class="menu-group">
+            <strong>Detail</strong>
+            <a href="#">Home</a>
+            <a href="#">Works</a>
+            <a href="#">Profile</a>
+          </div>
+          <div class="menu-group">
+            <strong>Heading</strong>
+            <a href="#">Home</a>
+            <a href="#">Works</a>
+          </div>
+          <div class="menu-group">
+            <strong>Body</strong>
+            <a href="#">Home</a>
+            <a href="#">Works</a>
+            <a href="#">Profile</a>
+          </div>
+        </div> -->
+            <div class="menu">
+                <a href="https://twitter.com/appleplecom">Twitter</a>
+                <a href="https://github.com/appleple/form-storage">GitHub</a>
+            </div>
+            <small class="copyright">© 2018 FormStorage</small>
+        </div>
+    </footer>
+
+    <script src="https://kokushin.github.io/unim/dist/js/unim.js"></script>
+    <script src="https://unpkg.com/scroll-hint@latest/js/scroll-hint.js"></script>
+    <script>
+    new ScrollHint('.js-scrollable');
+    </script>
+</body>
+
+</html>
