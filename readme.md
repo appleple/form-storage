@@ -1,6 +1,6 @@
 # form-storage
 
-A JavaScript library stores the form-data to the localstorage and restore them.
+A JavaScript library stores the form-data to the localstorage so you don't have to fill the form again.
 
 <img src="./docs/screenshot.png" />
 
