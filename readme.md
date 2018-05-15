@@ -1,6 +1,8 @@
 # form-storage
 
-Just a simple form storage
+A JavaScript library stores the form-data to the localstorage and restore them.
+
+<img src="./docs/screenshot.png" />
 
 ```sh
 npm install form-storage --save
