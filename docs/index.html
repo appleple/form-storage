@@ -242,8 +242,7 @@
         <div class="content">
             <section class="section">
                 <div class="inner is-small">
-                    <h2 id="demo">Demo</h2>
-                    <p>Fill the form and press the save button. then, reload this page.</p>
+                    <h2 class="section-title" id="demo">Demo</h2>
                     <form class="js-form-storage" style="margin-bottom: 20px;">
                       <table class="table" style="width:100%;">
                         <tr>
@@ -291,28 +290,26 @@
                             </td>
                         </tr>
                       </table>
+                      <div style="margin-top:10px">
+                        <label class="label">
+                            <input class="input js-persist" type="checkbox" name="save" />
+                            <span class="label-title">Save the form data before submitting.</span>
+                        </label>
+                        <button type="submit" class="button">submit</button>
+                      </div>
                     </form>
-                    <button class="button js-save">save</button> 
-                    <button class="button js-reload">reload</button> 
                     <script src="https://unpkg.com/form-storage@latest/build/form-storage.js"></script>
                     <script>
                     var storage = new FormStorage('.js-form-storage',{
                       name: 'form-storage',
                       checkbox: '.js-persist'
                     });
-                    storage.apply();
-                    document.querySelector('.js-save').addEventListener('click', function() {
-                      storage.save();
-                    });
-                    document.querySelector('.js-reload').addEventListener('click', function() {
-                      location.reload();
-                    });
                     </script>
                 </div>
             </section>
             <section class="section">
                 <div class="inner is-small">
-                    <h2 id="quick-start">Quick start</h2>
+                    <h2 class="section-title" id="quick-start">Quick start</h2>
                     <h3>Using CDN</h3>
                     <p>You can easily start by using CDN.</p>
                     <p>Add the following description in the
@@ -345,7 +342,7 @@
 
             <section class="section">
                 <div class="inner is-small">
-                    <h2 id="options">Options</h2>
+                    <h2 class="section-title" id="options">Options</h2>
                     <p>Some options are available when making new instances like below.</p>
                     <pre><code class="js">var storage = new FormStorage('.js-scrollable', {
   name: 'form-storage', //localstorage name
@@ -374,21 +371,21 @@
                                 <code>ignores</code>
                             </td>
                             <td>[]</td>
-                            <td>Selectors which won't be stored on the storage</td>
+                            <td>Selectors which won't be saved on the storage</td>
                         </tr>
                         <tr>
                             <td>
                                 <code>includes</code>
                             </td>
                             <td>[]</td>
-                            <td>When specified, only selectors specified here will be stored</td>
+                            <td>When specified, only selectors specified here will be saved</td>
                         </tr>
                         <tr>
                             <td>
                                 <code>checkbox</code>
                             </td>
                             <td>null</td>
-                            <td>When specified, only when the element is checked, the form-data will be saved</td>
+                            <td>When this checkbox is checked, the form data will be saved before submitting <br>and the form data will be restored when the page is loaded.</td>
                         </tr>
                     </table>
                   </div>
@@ -397,7 +394,7 @@
 
             <section class="section">
                 <div class="inner is-small">
-                    <h2 id="options">Methods</h2>
+                    <h2 class="section-title" id="options">Methods</h2>
                     <p>You can also use some methods from the instances like below</p>
                     <pre><code class="js">var storage = new FormStorage('.js-scrollable', {
   name: 'form-storage', //localstorage name
