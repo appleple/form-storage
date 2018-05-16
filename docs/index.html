@@ -90,15 +90,16 @@
             font-size: 3rem;
         }
 
-        table td,
-        table th {
-            white-space: nowrap;
-        }
-
         .js-scrollable {
             max-width: 640px;
             margin: 30px auto 0 auto;
         }
+
+        .js-scrollable table td,
+        .js-scrollable table th {
+          white-space: nowrap;
+        }
+        
         svg{
           cursor: pointer;
           position: relative;
@@ -289,12 +290,16 @@
                                 </label>
                             </td>
                         </tr>
+                        <tr>
+                          <td colspan="2">
+                              <label class="label">
+                                  <input class="input js-persist" type="checkbox" name="save" />
+                                  <span class="label-title">Save the form data on submit.</span>
+                              </label>
+                          </td>
+                        </tr>
                       </table>
-                      <div style="margin-top:10px">
-                        <label class="label">
-                            <input class="input js-persist" type="checkbox" name="save" />
-                            <span class="label-title">Save the form data on submit.</span>
-                        </label>
+                      <div style="margin: 10px 0;">
                         <button type="submit" class="button">submit</button>
                       </div>
                     </form>
