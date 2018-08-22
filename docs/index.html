@@ -247,15 +247,15 @@
                     <form class="js-form-storage" style="margin-bottom: 20px;">
                       <table class="table" style="width:100%;">
                         <tr>
-                          <th>Sex</th>
+                          <th>Gender</th>
                           <td>
                             <label class="label" style="margin-right:15px;">
                               <input class="input" type="radio" name="sex" value="man">
-                              <span class="label-title">Man</span>
+                              <span class="label-title">Male</span>
                             </label>
                             <label class="label">
                               <input class="input" type="radio" name="sex" value="woman">
-                              <span class="label-title">Woman</span>
+                              <span class="label-title">Female</span>
                             </label>
                           </td>
                         </tr>
@@ -282,11 +282,11 @@
                                 </label>
                                 <label class="label" style="margin-right:15px;">
                                   <input class="input" type="checkbox" name="colors" value="black">
-                                  <span class="label-title">black</span>
+                                  <span class="label-title">Black</span>
                                 </label>
                                 <label class="label">
                                   <input class="input" type="checkbox" name="colors" value="white">
-                                  <span class="label-title">white</span>
+                                  <span class="label-title">White</span>
                                 </label>
                             </td>
                         </tr>
@@ -294,13 +294,13 @@
                           <td colspan="2">
                               <label class="label">
                                   <input class="input js-persist" type="checkbox" name="save" />
-                                  <span class="label-title">Save the form data on submit.</span>
+                                  <span class="label-title">Save form data.</span>
                               </label>
                           </td>
                         </tr>
                       </table>
                       <div style="margin: 10px 0;">
-                        <button type="submit" class="button">submit</button>
+                        <button type="submit" class="button">Submit</button>
                       </div>
                     </form>
                     <script src="https://unpkg.com/form-storage@latest/build/form-storage.js"></script>
@@ -316,14 +316,14 @@
                 <div class="inner is-small">
                     <h2 class="section-title" id="quick-start">Quick start</h2>
                     <h3>Using CDN</h3>
-                    <p>You can easily start by using CDN.</p>
+                    <p>You can easily start by using the CDN version.</p>
                     <p>Add the following description in the
-                        <code>&lt;head&gt;</code> tag of the web page you want to use FormStorage.</p>
+                        <code>&lt;head&gt;</code> tag of the web page you want to use FormStorage with.</p>
                     <pre><code class="html">&lt;script src="https://unpkg.com/form-storage@latest/build/form-storage.min.js"&gt;&lt;/script&gt;</code></pre>
-                    <p>You can also bundle the library with Browserify/Webpack</p>
+                    <p>You can also bundle the library with Browserify or Webpack.</p>
                     <pre><code class="shell">npm install form-storage --save</code></pre>
                     <pre><code class="javascript">import FormStorage from 'form-storage'</code></pre>
-                    <p>Wrap the elements you want to apply ScrollSuggest like below</p>
+                    <p>Wrap the elements you want to apply FormStorage to like this.</p>
                     <pre><code class="html">&lt;form class=&quot;js-form-storage&quot;&gt;
   &lt;input type=&quot;text&quot; name=&quot;first-name&quot; /&gt;
   &lt;input type=&quot;text&quot; name=&quot;last-name&quot; /&gt;
@@ -331,7 +331,7 @@
   &lt;input type=&quot;password&quot; name=&quot;password&quot; /&gt;
   &lt;label&gt;
     &lt;input type=&quot;checkbox&quot; class=&quot;js-persist&quot; /&gt;
-    Allow to store the form-data to the localstorage.
+    Allow saving form-data to localstorage.
   &lt;/label&gt;
 &lt;/form&gt;</code></pre>
                     <p>Write the following script</p>
@@ -348,7 +348,7 @@
             <section class="section">
                 <div class="inner is-small">
                     <h2 class="section-title" id="options">Options</h2>
-                    <p>Some options are available when making new instances like below.</p>
+                    <p>Some options are available when making new instances.</p>
                     <pre><code class="js">var storage = new FormStorage('.js-scrollable', {
   name: 'form-storage', //localstorage name
   ignores: [ // The selectors specified here, won't be stored in the storage.
@@ -356,7 +356,7 @@
   ],
   checkbox: '.js-persist' //if the selector specified here is checked, the form data will be stored.
 });</code></pre>
-                    <p>For your reference, below is the list of the options available.</p>
+                    <p>For your reference, below is a list of available options.</p>
                     <div class="js-scrollable">
                     <table class="table">
                         <tr>
@@ -376,7 +376,7 @@
                                 <code>ignores</code>
                             </td>
                             <td>[]</td>
-                            <td>Selectors which won't be saved on the storage</td>
+                            <td>Selectors which won't be saved to localstorage</td>
                         </tr>
                         <tr>
                             <td>
@@ -400,7 +400,7 @@
             <section class="section">
                 <div class="inner is-small">
                     <h2 class="section-title" id="options">Methods</h2>
-                    <p>You can also use some methods from the instances like below</p>
+                    <p>You can also use some methods from instances like below</p>
                     <pre><code class="js">var storage = new FormStorage('.js-scrollable', {
   name: 'form-storage', //localstorage name
   ignores: [ // The selectors specified here, won't be stored in the storage.
@@ -418,7 +418,7 @@ storage.save(); //using the method
                         </tr>
                         <tr>
                           <td>save</td>
-                          <td>Save the form-data on the localstorage</td>
+                          <td>Save the form data to localstorage</td>
                         </tr>
                         <tr>
                             <td>apply</td>
@@ -426,7 +426,7 @@ storage.save(); //using the method
                         </tr>
                         <tr>
                             <td>clear</td>
-                            <td>Remove the localstorage</td>
+                            <td>Remove data from localstorage</td>
                         </tr>
                       </table>
                     </div>
