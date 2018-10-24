@@ -49,8 +49,8 @@ export default class FormStorage {
 
     for (const key in obj) {
       let flag = false;
-      const target = document.querySelector(`[name="${key}"]`);
-      const targets = document.querySelectorAll(`[name="${key}"]`);
+      const target = this.ele.querySelector(`[name="${key}"]`);
+      const targets = this.ele.querySelectorAll(`[name="${key}"]`);
 
       if (!target) {
         continue;
