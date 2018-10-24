@@ -846,7 +846,7 @@ var FormStorage = function () {
         } else {
           target.value = obj[key];
         }
-      };
+      }.bind(this);
 
       for (var key in obj) {
         var _ret = _loop(key);
