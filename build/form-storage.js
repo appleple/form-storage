@@ -784,8 +784,8 @@ var FormStorage = function () {
 
       var _loop = function _loop(key) {
         var flag = false;
-        var target = document.querySelector('[name="' + key + '"]');
-        var targets = document.querySelectorAll('[name="' + key + '"]');
+        var target = this.ele.querySelector('[name="' + key + '"]');
+        var targets = this.ele.querySelectorAll('[name="' + key + '"]');
 
         if (!target) {
           return 'continue';
