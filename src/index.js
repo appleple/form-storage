@@ -39,14 +39,13 @@ export default class FormStorage {
     })
   }
 
-  apply() {
-    const str = window.localStorage.getItem(this.opt.name);
-    const { ignores, includes } = this.opt;
-    if (!str) {
-      return;
-    }
-    const obj = queryString.parse(str.replace(/^"(.*)"$/, "$1"));
+  getState() {
+    return serialize(this.ele);
+  }
 
+  applyState(str) {
+    const { ignores, includes } = this.opt;
+    const obj = queryString.parse(str.replace(/^"(.*)"$/, "$1"));
     for (const key in obj) {
       let flag = false;
       const target = this.ele.querySelector(`[name="${key}"]`);
@@ -112,5 +111,13 @@ export default class FormStorage {
         target.value = obj[key];
       }
     }
+  }
+
+  apply() {
+    const str = window.localStorage.getItem(this.opt.name);
+    if (!str) {
+      return;
+    }
+    this.applyState(str);
   }
 }
