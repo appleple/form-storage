@@ -5,7 +5,7 @@
  * form-storage:
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: appleple
- *   version: 1.2.1
+ *   version: 1.3.0
  *
  * decode-uri-component:
  *   license: MIT (http://opensource.org/licenses/MIT)
@@ -729,7 +729,8 @@ var defaults = {
   name: 'form',
   ignores: [],
   includes: [],
-  checkbox: null
+  checkbox: null,
+  notPersistedNames: []
 };
 
 var FormStorage = function () {
@@ -749,6 +750,13 @@ var FormStorage = function () {
     key: 'save',
     value: function save() {
       var str = (0, _formSerialize2.default)(this.ele);
+
+      this.opt.notPersistedNames.forEach(function (name) {
+        var regexp = name + '=.*&';
+        var re = new RegExp(regexp, "g");
+        str.replace(re, "");
+      });
+
       window.localStorage.setItem(this.opt.name, str);
     }
   }, {
