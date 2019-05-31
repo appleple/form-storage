@@ -22,12 +22,12 @@ export default class FormStorage {
   }
 
   save() {
-    const str = serialize(this.ele);
+    let str = serialize(this.ele);
 
     this.opt.notPersistedNames.forEach((name) => {
-      const regexp = `${name}=.*&`;
+      const regexp = `${encodeURIComponent(name)}=.*&`;
       const re = new RegExp(regexp, "g");
-      str.replace(re, "")
+      str = str.replace(re, "")
     });
 
     window.localStorage.setItem(this.opt.name, str);
