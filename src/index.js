@@ -23,9 +23,8 @@ export default class FormStorage {
 
   save() {
     let str = serialize(this.ele);
-
     this.opt.notPersistedNames.forEach((name) => {
-      const regexp = `${encodeURIComponent(name)}=.*&`;
+      const regexp = `${encodeURIComponent(name)}=.[^&]*&?`;
       const re = new RegExp(regexp, "g");
       str = str.replace(re, "")
     });
