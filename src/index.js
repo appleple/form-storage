@@ -1,3 +1,4 @@
+import 'element-matches-polyfill';
 import serialize from 'form-serialize';
 import queryString from 'query-string-es5';
 
