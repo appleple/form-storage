@@ -1,5 +1,5 @@
 import serialize from 'form-serialize';
-import queryString from 'query-string';
+import queryString from 'query-string-es5';
 
 const defaults = {
   name: 'form',
