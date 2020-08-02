@@ -6,7 +6,8 @@ const defaults = {
   name: 'form',
   ignores: [],
   includes: [],
-  checkbox: null
+  checkbox: null,
+  notPersistedNames: []
 }
 
 export default class FormStorage {
@@ -22,7 +23,13 @@ export default class FormStorage {
   }
 
   save() {
-    const str = serialize(this.ele);
+    let str = serialize(this.ele);
+    this.opt.notPersistedNames.forEach((name) => {
+      const regexp = `${encodeURIComponent(name)}=.[^&]*&?`;
+      const re = new RegExp(regexp, "g");
+      str = str.replace(re, "")
+    });
+
     window.localStorage.setItem(this.opt.name, str);
   }
 

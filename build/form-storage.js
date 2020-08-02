@@ -675,7 +675,8 @@ var defaults = {
   name: 'form',
   ignores: [],
   includes: [],
-  checkbox: null
+  checkbox: null,
+  notPersistedNames: []
 };
 
 var FormStorage = function () {
@@ -695,6 +696,12 @@ var FormStorage = function () {
     key: 'save',
     value: function save() {
       var str = (0, _formSerialize2.default)(this.ele);
+      this.opt.notPersistedNames.forEach(function (name) {
+        var regexp = encodeURIComponent(name) + '=.[^&]*&?';
+        var re = new RegExp(regexp, "g");
+        str = str.replace(re, "");
+      });
+
       window.localStorage.setItem(this.opt.name, str);
     }
   }, {
