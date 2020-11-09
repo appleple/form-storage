@@ -7,7 +7,7 @@
     "bundle": "browserify ./src/index.js -t babelify -p licensify --standalone FormStorage --outfile ./build/form-storage.js",
     "build": "npm run bundle && npm run build:lib",
     "build:lib": "babel src --out-dir lib",
-    "deploy": "build np --no-cleanup"
+    "deploy": "npm run build np --no-cleanup"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
