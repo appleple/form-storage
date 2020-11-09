@@ -5,7 +5,7 @@
  * form-storage:
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: appleple
- *   version: 1.3.3
+ *   version: 1.3.5
  *
  * decode-uri-component:
  *   license: MIT (http://opensource.org/licenses/MIT)
