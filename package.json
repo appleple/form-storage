@@ -1,6 +1,6 @@
 {
   "name": "form-storage",
-  "version": "1.3.4",
+  "version": "1.3.5",
   "description": "just a simple form storage",
   "main": "./lib/index.js",
   "scripts": {
