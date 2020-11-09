@@ -5,13 +5,19 @@
  * form-storage:
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: appleple
- *   version: 1.3.0
+ *   version: 1.3.3
  *
  * decode-uri-component:
  *   license: MIT (http://opensource.org/licenses/MIT)
  *   author: Sam Verschueren <sam.verschueren@gmail.com>
  *   homepage: https://github.com/SamVerschueren/decode-uri-component#readme
  *   version: 0.2.0
+ *
+ * element-matches-polyfill:
+ *   license: MIT (http://opensource.org/licenses/MIT)
+ *   author: mboughaba
+ *   homepage: https://github.com/mboughaba/element-matches-polyfill#readme
+ *   version: 1.0.0
  *
  * form-serialize:
  *   license: MIT (http://opensource.org/licenses/MIT)
@@ -124,6 +130,22 @@ module.exports = function (encodedURI) {
 };
 
 },{}],2:[function(require,module,exports){
+if (!Element.prototype.matches) {
+  Element.prototype.matches =
+    Element.prototype.matchesSelector ||
+    Element.prototype.mozMatchesSelector ||
+    Element.prototype.msMatchesSelector ||
+    Element.prototype.oMatchesSelector ||
+    Element.prototype.webkitMatchesSelector ||
+    function(s) {
+      var matches = (this.document || this.ownerDocument).querySelectorAll(s),
+        i = matches.length;
+      while (--i >= 0 && matches.item(i) !== this) {}
+      return i > -1;
+    };
+}
+
+},{}],3:[function(require,module,exports){
 // get successful control from form and assemble into object
 // http://www.w3.org/TR/html401/interact/forms.html#h-17.13.2
 
@@ -385,7 +407,7 @@ function str_serialize(result, key, value) {
 
 module.exports = serialize;
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 'use strict';
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
@@ -650,7 +672,7 @@ exports.parseUrl = function (input, options) {
 		query: parse(extract(input), options)
 	};
 };
-},{"decode-uri-component":1}],4:[function(require,module,exports){
+},{"decode-uri-component":1}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -658,6 +680,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+require('element-matches-polyfill');
 
 var _formSerialize = require('form-serialize');
 
@@ -820,5 +844,5 @@ var FormStorage = function () {
 exports.default = FormStorage;
 module.exports = exports['default'];
 
-},{"form-serialize":2,"query-string-es5":3}]},{},[4])(4)
+},{"element-matches-polyfill":2,"form-serialize":3,"query-string-es5":4}]},{},[5])(5)
 });
