@@ -21,7 +21,7 @@ yarn add form-storage
 ### via cdn
 
 ```html
-<script src="https://unpkg.com/form-storage@1.2.0/build/form-storage.js"></script>
+<script src="https://unpkg.com/form-storage@latest/build/form-storage.js"></script>
 ```
 
 ## Usage
